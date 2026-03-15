@@ -6,7 +6,7 @@ class MyVector{
     private:
         size_t size = 0;
         size_t cap = 0;
-        T* ptr;
+        T* ptr = nullptr;
 
     public:
         MyVector(){
@@ -84,7 +84,7 @@ class MyVector{
 
         void push_back(const T& val){
             if(size == cap){
-                size_t new_cap = (cap == 0) ? 1: (cap * 2);
+                size_t new_cap = (cap == 0) ? 1 : (cap * 2);
                 reserve(new_cap);
             }
             new (ptr + size) T(val);
@@ -93,7 +93,7 @@ class MyVector{
 
         void push_back(T&& val){
             if(size == cap){
-                size_t new_cap = (cap == 0) ? 1:(cap<<1);
+                size_t new_cap = (cap == 0) ? 1 : (cap * 2);
                 reserve(new_cap);
             }
             new (ptr + size) T(std::move(val));
